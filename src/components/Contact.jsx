@@ -7,12 +7,13 @@ const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email?.trim() 
 
 export default function Contact() {
   const [form, setForm] = useState({
-    name: '',
+    'full-name': '',
     phone: '',
     email: '',
     message: '',
   })
   const [touched, setTouched] = useState({ email: false })
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target
@@ -26,11 +27,31 @@ export default function Contact() {
   const emailValid = isValidEmail(form.email)
   const showEmailValid = touched.email && form.email.length > 0
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const subject = `AMC Sweep – Enquiry from ${form.name || 'Website'}`
-    const body = `Name: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
-    window.location.href = `mailto:aidan@amcsweep.ie?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    setSubmitStatus(null)
+
+    // Encode form data for Netlify
+    const formData = new FormData(e.target)
+    const encoded = new URLSearchParams(formData).toString()
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encoded,
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setForm({ 'full-name': '', phone: '', email: '', message: '' })
+        setTouched({ email: false })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (err) {
+      setSubmitStatus('error')
+    }
   }
 
   return (
@@ -89,17 +110,26 @@ export default function Contact() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form
+            onSubmit={handleSubmit}
+            method="POST"
+            name="contact"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            className="space-y-4"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="bot-field" />
             <div>
-              <label htmlFor="name" className="mb-1 block text-sm font-medium text-cream">
+              <label htmlFor="full-name" className="mb-1 block text-sm font-medium text-cream">
                 Name
               </label>
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="full-name"
+                name="full-name"
                 required
-                value={form.name}
+                value={form['full-name']}
                 onChange={handleChange}
                 placeholder="Your name"
                 className="w-full rounded-lg border border-cream/20 bg-charcoal-100 px-4 py-3 text-charcoal outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
@@ -165,10 +195,25 @@ export default function Contact() {
               type="submit"
               whileHover={{ scale: 1.02, boxShadow: '0 8px 30px rgba(234, 92, 43, 0.4)' }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-4 text-base font-semibold text-charcoal shadow-lg"
+              disabled={submitStatus === 'success'}
+              className="inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-4 text-base font-semibold text-charcoal shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Send Message
+              {submitStatus === 'success' ? 'Sent!' : 'Send Message'}
             </motion.button>
+            {submitStatus === 'success' && (
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-sm font-medium text-emerald-400"
+              >
+                Thank you! Your message has been sent. Aidan will get back to you soon.
+              </motion.p>
+            )}
+            {submitStatus === 'error' && (
+              <p className="text-sm font-medium text-amber-400">
+                Something went wrong. Please try again or email us directly.
+              </p>
+            )}
           </form>
         </motion.div>
       </div>
