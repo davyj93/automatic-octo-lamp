@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Quote, Star } from 'lucide-react'
+import { Star } from 'lucide-react'
 
 const testimonials = [
   {
@@ -62,15 +62,21 @@ export default function Testimonials() {
               variants={card}
               className="relative rounded-2xl border border-cream/10 bg-charcoal-700/80 p-8 shadow-lg backdrop-blur-sm"
             >
-              <Quote className="absolute right-6 top-6 h-10 w-10 text-accent/30" />
-              <div className="relative mb-4 flex gap-0.5">
+              <img
+                src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png"
+                alt="Google"
+                className="absolute right-5 top-5 h-6 w-6 object-contain opacity-90"
+                width={24}
+                height={24}
+              />
+              <div className="mb-4 flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 fill-accent text-accent" strokeWidth={0} />
                 ))}
               </div>
-              <p className="relative mb-6 text-cream/95 leading-relaxed">{t.quote}</p>
-              <footer className="text-sm font-medium text-cream/80">
-                — {t.author}
+              <p className="mb-6 text-cream/95 leading-relaxed">{t.quote}</p>
+              <footer className="flex items-center gap-2 text-sm font-medium text-cream/80">
+                <span>— {t.author}</span>
               </footer>
             </motion.blockquote>
           ))}

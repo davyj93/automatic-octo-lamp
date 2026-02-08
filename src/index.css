@@ -12,76 +12,6 @@
   }
 }
 
-/* Smoke animation for hero chimney SVG */
-@keyframes smoke-float {
-  0%, 100% {
-    opacity: 0.25;
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateY(-15px) scale(1.02);
-  }
-}
-
-.animate-smoke {
-  animation: smoke-float 6s ease-in-out infinite;
-}
-
-.animate-smoke-delay-1 {
-  animation: smoke-float 7s ease-in-out 0.5s infinite;
-}
-
-.animate-smoke-delay-2 {
-  animation: smoke-float 8s ease-in-out 1s infinite;
-}
-
-/* Hero smoke overlay – smoke drifting across the hero in a loop */
-@keyframes hero-smoke-drift-1 {
-  0%, 100% {
-    opacity: 0.2;
-    transform: translateX(-10%) translateY(0) scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: translateX(10%) translateY(-5%) scale(1.05);
-  }
-}
-
-@keyframes hero-smoke-drift-2 {
-  0%, 100% {
-    opacity: 0.15;
-    transform: translateX(15%) translateY(10%) scale(1.1);
-  }
-  50% {
-    opacity: 0.35;
-    transform: translateX(-5%) translateY(0) scale(1);
-  }
-}
-
-@keyframes hero-smoke-drift-3 {
-  0%, 100% {
-    opacity: 0.25;
-    transform: translateX(0) translateY(-8%) scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: translateX(-8%) translateY(5%) scale(1.08);
-  }
-}
-
-.hero-smoke-layer-1 {
-  animation: hero-smoke-drift-1 18s ease-in-out infinite;
-}
-
-.hero-smoke-layer-2 {
-  animation: hero-smoke-drift-2 22s ease-in-out 3s infinite;
-}
-
-.hero-smoke-layer-3 {
-  animation: hero-smoke-drift-3 20s ease-in-out 6s infinite;
-}
-
 /* Form validation */
 .input-valid {
   @apply border-emerald-500 ring-2 ring-emerald-500/20;
@@ -100,26 +30,3 @@
   @apply border border-cream/10 bg-charcoal/80 backdrop-blur-xl;
 }
 
-/* SmokeOverlay – realistic smoke passing over viewport (desktop only) */
-@keyframes smoke-plume-drift {
-  0%, 100% {
-    opacity: 0.04;
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    opacity: 0.08;
-    transform: translate(3%, -2%) scale(1.02);
-  }
-  66% {
-    opacity: 0.05;
-    transform: translate(-2%, 1%) scale(0.98);
-  }
-}
-
-.smoke-plume-layer-1 {
-  animation: smoke-plume-drift 25s ease-in-out infinite;
-}
-
-.smoke-plume-layer-2 {
-  animation: smoke-plume-drift 30s ease-in-out 5s infinite;
-}
