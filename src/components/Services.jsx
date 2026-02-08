@@ -66,7 +66,7 @@ export default function Services() {
         >
           <h2 className="text-3xl font-bold text-cream sm:text-4xl">Our Services</h2>
           <p className="mx-auto mt-3 max-w-xl text-cream/70">
-            From open fires to stoves—we cover it all across Dublin and surrounds.
+            From open fires to stoves—we cover it all with professional care.
           </p>
         </motion.div>
 

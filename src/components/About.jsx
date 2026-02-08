@@ -33,13 +33,13 @@ export default function About() {
           </motion.h2>
           <motion.div variants={item} className="max-w-none">
             <p className="text-cream/95 leading-relaxed">
-              Aidan runs <strong className="text-cream">AMC Sweep</strong> with one goal: keeping Dublin homes safe and warm.
-              From <strong className="text-cream">Dún Laoghaire to Swords</strong>, he serves the Greater Dublin Area and takes pride in a{' '}
+              Aidan runs <strong className="text-cream">AMC Sweep</strong> with one goal: keeping your home safe and warm.
+              He takes pride in a{' '}
               <strong className="text-accent">"no mess, no fuss"</strong> approach—efficient, thorough work with minimal disruption to your day.
             </p>
             <p className="mt-4 text-cream/95 leading-relaxed">
               Whether it&apos;s an annual sweep, a blocked flue, or a safety check before the winter, you&apos;re in experienced hands. 
-              Dubliners trust AMC Sweep for a reason: we show up on time, do the job right, and leave your home spotless.
+              Customers trust AMC Sweep for a reason: we show up on time, do the job right, and leave your home spotless.
             </p>
           </motion.div>
         </motion.div>

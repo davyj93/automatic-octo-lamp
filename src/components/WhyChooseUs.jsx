@@ -3,7 +3,7 @@ import { Shield, MapPin, Wrench } from 'lucide-react'
 
 const points = [
   { icon: Shield, title: 'Fully Insured', text: "You're covered for peace of mind." },
-  { icon: MapPin, title: 'Dublin Based', text: 'Local, reliable, and quick to respond.' },
+  { icon: MapPin, title: 'Reliable & Local', text: 'Professional service, quick to respond.' },
   { icon: Wrench, title: 'Modern Equipment', text: 'Professional tools for a thorough, clean job.' },
   { icon: Shield, title: 'Fully Certified', text: 'Trained and certified to the highest standards.' },
 ]

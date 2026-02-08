@@ -10,8 +10,8 @@ const faqs = [
   },
   {
     id: 2,
-    question: 'Do you cover my area in Dublin?',
-    answer: "Yes. AMC Sweep serves the Greater Dublin Area and surrounding areas such as Meath and Kildare.",
+    question: 'Do you cover my area?',
+    answer: "AMC Sweep serves the Greater Dublin Area and surrounding counties. Contact us to confirm your location.",
   },
   {
     id: 3,

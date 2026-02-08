@@ -18,20 +18,12 @@ export default function Hero() {
           className="mb-6 h-auto w-full max-w-md px-4 sm:max-w-lg md:max-w-xl"
         />
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="mb-4 text-sm font-medium uppercase tracking-widest text-accent"
-        >
-          Dublin &amp; Surrounds
-        </motion.p>
-        <motion.p
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
           className="mx-auto mb-10 max-w-xl text-lg text-cream/90"
         >
-          Professional, clean, and reliable—from Rathmines to Howth, we keep Dublin homes safe and warm. No mess, no fuss.
+          Professional, clean, and reliable—we keep your home safe and warm. No mess, no fuss.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

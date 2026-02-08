@@ -45,7 +45,7 @@ export default function Testimonials() {
         >
           <h2 className="text-3xl font-bold text-cream sm:text-4xl">What Our Customers Say</h2>
           <p className="mx-auto mt-3 max-w-xl text-cream/80">
-            Trusted by Dublin homeowners from the coast to the suburbs.
+            Trusted by homeowners for quality and reliability.
           </p>
         </motion.div>
 
