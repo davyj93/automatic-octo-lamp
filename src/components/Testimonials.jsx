@@ -95,15 +95,9 @@ export default function Testimonials() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02, boxShadow: '0 8px 30px rgba(230, 81, 39, 0.4)' }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-base font-semibold text-charcoal shadow-lg transition"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 text-base font-semibold text-cream shadow-lg transition hover:bg-accent-600"
           >
-            <img
-              src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png"
-              alt="Google"
-              className="h-5 w-5 object-contain"
-              width={20}
-              height={20}
-            />
+            <Star className="h-5 w-5 fill-cream text-cream" strokeWidth={0} />
             Read All Google Reviews
           </motion.a>
         </motion.div>
