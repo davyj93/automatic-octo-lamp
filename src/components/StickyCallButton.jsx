@@ -4,27 +4,51 @@ import { Phone } from 'lucide-react'
 
 /**
  * Sticky call button for mobile – stays at bottom of viewport on small screens.
+ * Hides at top of page and when near the footer.
  */
 export default function StickyCallButton() {
   const [visible, setVisible] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const check = () => {
+    const checkVisibility = () => {
       const mobile = window.matchMedia('(max-width: 767px)').matches
       setIsMobile(mobile)
-      setVisible(mobile && window.scrollY > 300)
+      
+      if (!mobile) {
+        setVisible(false)
+        return
+      }
+
+      const scrollY = window.scrollY
+      const windowHeight = window.innerHeight
+      const documentHeight = document.documentElement.scrollHeight
+      const distanceFromBottom = documentHeight - (scrollY + windowHeight)
+
+      // Show button if: scrolled down > 300px AND not within 100px of bottom
+      const shouldShow = scrollY > 300 && distanceFromBottom > 100
+      setVisible(shouldShow)
     }
+
     const onScroll = () => {
       if (!window.matchMedia('(max-width: 767px)').matches) return
-      setVisible(window.scrollY > 300)
+      
+      const scrollY = window.scrollY
+      const windowHeight = window.innerHeight
+      const documentHeight = document.documentElement.scrollHeight
+      const distanceFromBottom = documentHeight - (scrollY + windowHeight)
+
+      // Show button if: scrolled down > 300px AND not within 100px of bottom
+      const shouldShow = scrollY > 300 && distanceFromBottom > 100
+      setVisible(shouldShow)
     }
-    check()
+
+    checkVisibility()
     window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', check)
+    window.addEventListener('resize', checkVisibility)
     return () => {
       window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', check)
+      window.removeEventListener('resize', checkVisibility)
     }
   }, [])
 
