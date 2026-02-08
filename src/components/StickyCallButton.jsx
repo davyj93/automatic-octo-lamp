@@ -32,7 +32,7 @@ export default function StickyCallButton() {
 
   return (
     <motion.a
-      href="tel:+353871234567"
+      href="tel:+353873377923"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
       transition={{ duration: 0.25 }}

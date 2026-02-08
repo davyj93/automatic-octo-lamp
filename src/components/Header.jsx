@@ -47,7 +47,7 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="tel:+353871234567"
+            href="tel:+353873377923"
             className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-charcoal transition hover:bg-accent-400"
           >
             <Phone className="h-4 w-4" />
@@ -91,7 +91,7 @@ export default function Header() {
               ))}
               <li>
                 <a
-                  href="tel:+353871234567"
+                  href="tel:+353873377923"
                   className="flex items-center gap-2 rounded-lg bg-accent px-4 py-3 font-semibold text-charcoal"
                   onClick={() => setMobileOpen(false)}
                 >
