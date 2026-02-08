@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion'
 import MagneticButton from './MagneticButton'
+import SmokeOverlay from './SmokeOverlay'
 
 export default function Hero() {
   return (
     <section
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#222224] px-4 pt-20"
     >
+      <SmokeOverlay />
       <div className="relative z-10 flex max-w-4xl flex-col items-center text-center">
         <motion.img
           src="/logo.png"
