@@ -4,18 +4,39 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone } from 'lucide-react'
 
 const navLinks = [
+  { label: 'Home', href: '#hero' },
   { label: 'Services', href: '#services' },
-  { label: 'About', href: '#about' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Why Choose Us', href: '#why-choose-us' },
+  { label: 'Reviews', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ]
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('#hero')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60)
+
+      // Scroll spy - detect which section is in view
+      const sections = ['hero', 'services', 'why-choose-us', 'testimonials', 'contact']
+      const scrollPosition = window.scrollY + 100 // offset for header
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          const { offsetTop, offsetHeight } = element
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(`#${sectionId}`)
+            break
+          }
+        }
+      }
+    }
+    
+    onScroll() // Run on mount
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -40,7 +61,9 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-cream/90 transition hover:text-accent"
+              className={`text-sm font-medium transition hover:text-accent ${
+                activeSection === link.href ? 'text-accent' : 'text-cream/90'
+              }`}
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
@@ -82,7 +105,9 @@ export default function Header() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="block rounded-lg px-4 py-3 text-cream/90 hover:bg-cream/5 hover:text-accent"
+                    className={`block rounded-lg px-4 py-3 hover:bg-cream/5 hover:text-accent transition ${
+                      activeSection === link.href ? 'text-accent bg-cream/5' : 'text-cream/90'
+                    }`}
                     onClick={() => setMobileOpen(false)}
                   >
                     {link.label}

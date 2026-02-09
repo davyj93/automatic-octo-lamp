@@ -27,7 +27,7 @@ const item = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative bg-charcoal-800 py-20 sm:py-24">
+    <section id="why-choose-us" className="relative bg-charcoal-800 py-20 sm:py-24">
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}

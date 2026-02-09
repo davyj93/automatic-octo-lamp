@@ -35,7 +35,7 @@ const card = {
 
 export default function Testimonials() {
   return (
-    <section className="relative bg-charcoal-800 py-20 sm:py-24">
+    <section id="testimonials" className="relative bg-charcoal-800 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

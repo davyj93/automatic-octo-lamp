@@ -5,6 +5,7 @@ import SmokeOverlay from './SmokeOverlay'
 export default function Hero() {
   return (
     <section
+      id="hero"
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#222224] px-4 pt-20"
     >
       <SmokeOverlay />
