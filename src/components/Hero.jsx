@@ -9,14 +9,21 @@ export default function Hero() {
     >
       <SmokeOverlay />
       <div className="relative z-10 flex max-w-4xl flex-col items-center text-center">
-        <motion.img
-          src="/logo.png"
-          alt="AMC Sweep – Chimney sweep"
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-6 h-auto w-full max-w-md px-4 sm:max-w-lg md:max-w-xl"
-        />
+          className="mb-6 flex flex-col items-start px-4"
+          style={{ fontFamily: "'Archivo', sans-serif" }}
+        >
+          <div className="italic font-black text-6xl tracking-tighter leading-none">
+            <span className="text-accent">// AMC</span>{' '}
+            <span className="text-cream">SWEEP</span>
+          </div>
+          <div className="text-2xl italic font-bold text-accent self-start ml-8 mt-1">
+            Chimney sweep
+          </div>
+        </motion.div>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
