@@ -4,17 +4,33 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone } from 'lucide-react'
 
 const navLinks = [
-  { label: 'Home', href: '#hero' },
-  { label: 'Services', href: '#services' },
-  { label: 'Why Choose Us', href: '#why-choose-us' },
-  { label: 'Reviews', href: '#testimonials' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', id: 'hero' },
+  { label: 'Services', id: 'services' },
+  { label: 'Why Choose Us', id: 'why-choose-us' },
+  { label: 'Reviews', id: 'testimonials' },
+  { label: 'Contact', id: 'contact' },
 ]
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('#hero')
+  const [activeSection, setActiveSection] = useState('hero')
+
+  // Manual scroll function with offset for sticky header
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const headerOffset = 80 // Offset for sticky header
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
+    setMobileOpen(false) // Close menu after clicking
+  }
 
   useEffect(() => {
     const onScroll = () => {
@@ -29,7 +45,7 @@ export default function Header() {
         if (element) {
           const { offsetTop, offsetHeight } = element
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(`#${sectionId}`)
+            setActiveSection(sectionId)
             break
           }
         }
@@ -65,16 +81,15 @@ export default function Header() {
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <button
+              key={link.id}
+              onClick={() => scrollToSection(link.id)}
               className={`text-sm font-medium transition hover:text-accent ${
-                activeSection === link.href ? 'text-accent' : 'text-cream/90'
+                activeSection === link.id ? 'text-accent' : 'text-cream/90'
               }`}
-              onClick={() => setMobileOpen(false)}
             >
               {link.label}
-            </a>
+            </button>
           ))}
           <a
             href="tel:+353873377923"
@@ -109,16 +124,15 @@ export default function Header() {
           >
             <ul className="flex flex-col gap-1 px-4 py-4">
               {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className={`block rounded-lg px-4 py-3 hover:bg-cream/5 hover:text-accent transition ${
-                      activeSection === link.href ? 'text-accent bg-cream/5' : 'text-cream/90'
+                <li key={link.id}>
+                  <button
+                    onClick={() => scrollToSection(link.id)}
+                    className={`block w-full text-left rounded-lg px-4 py-3 hover:bg-cream/5 hover:text-accent transition ${
+                      activeSection === link.id ? 'text-accent bg-cream/5' : 'text-cream/90'
                     }`}
-                    onClick={() => setMobileOpen(false)}
                   >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
               <li>
