@@ -51,8 +51,15 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="AMC Sweep" className="h-9 w-auto sm:h-10" />
+        <Link 
+          to="/" 
+          className="flex items-center gap-2"
+          style={{ fontFamily: "'Archivo', sans-serif" }}
+        >
+          <div className="italic font-black text-2xl tracking-tighter leading-none">
+            <span className="text-accent">// AMC</span>{' '}
+            <span className="text-cream">SWEEP</span>
+          </div>
         </Link>
 
         {/* Desktop nav */}
