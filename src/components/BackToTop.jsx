@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 /**
  * Floating "Back to Top" button that appears after scrolling down.
- * Uses chimney arrow image and smooth scrolls to top.
+ * Uses a minimal SVG arrow with outline aesthetic.
  */
 export default function BackToTop() {
   const [visible, setVisible] = useState(false)
@@ -33,16 +33,26 @@ export default function BackToTop() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.3 }}
           onClick={scrollToTop}
-          className="fixed bottom-24 right-8 z-50 w-16 h-16 rounded-full shadow-lg hover:shadow-xl transition-shadow md:bottom-8"
+          className="fixed bottom-24 right-8 z-50 transition-transform md:bottom-8"
           aria-label="Back to top"
         >
-          <img 
-            src="/chimneyarrow.png" 
-            alt="Back to top" 
-            className="w-full h-full object-contain"
-          />
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-accent"
+          >
+            <path d="M12 19V5M5 12l7-7 7 7" />
+          </svg>
         </motion.button>
       )}
     </AnimatePresence>
