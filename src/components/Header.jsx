@@ -16,20 +16,18 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
 
-  // Manual scroll function with offset for sticky header
+  // Manual scroll function with delay to ensure menu closes first
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const headerOffset = 80 // Offset for sticky header
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
-    setMobileOpen(false) // Close menu after clicking
+    // Close menu immediately
+    setMobileOpen(false)
+    
+    // Wait 100ms for menu to close before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 100)
   }
 
   useEffect(() => {
