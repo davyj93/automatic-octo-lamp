@@ -78,17 +78,33 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => scrollToSection(link.id)}
-              className={`text-sm font-medium transition hover:text-accent ${
-                activeSection === link.id ? 'text-accent' : 'text-cream/90'
-              }`}
-            >
-              {link.label}
-            </button>
-          ))}
+          {navLinks.map((link) =>
+            link.id === 'reviews' ? (
+              <a
+                key={link.id}
+                href="#reviews"
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToSection(link.id)
+                }}
+                className={`text-sm font-medium transition hover:text-accent ${
+                  activeSection === link.id ? 'text-accent' : 'text-cream/90'
+                }`}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className={`text-sm font-medium transition hover:text-accent ${
+                  activeSection === link.id ? 'text-accent' : 'text-cream/90'
+                }`}
+              >
+                {link.label}
+              </button>
+            )
+          )}
           <a
             href="tel:+353873377923"
             className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-charcoal transition hover:bg-accent-400"
@@ -123,14 +139,29 @@ export default function Header() {
             <ul className="flex flex-col gap-1 px-4 py-4">
               {navLinks.map((link) => (
                 <li key={link.id}>
-                  <button
-                    onClick={() => scrollToSection(link.id)}
-                    className={`block w-full text-left rounded-lg px-4 py-3 hover:bg-cream/5 hover:text-accent transition ${
-                      activeSection === link.id ? 'text-accent bg-cream/5' : 'text-cream/90'
-                    }`}
-                  >
-                    {link.label}
-                  </button>
+                  {link.id === 'reviews' ? (
+                    <a
+                      href="#reviews"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        scrollToSection(link.id)
+                      }}
+                      className={`block w-full text-left rounded-lg px-4 py-3 hover:bg-cream/5 hover:text-accent transition ${
+                        activeSection === link.id ? 'text-accent bg-cream/5' : 'text-cream/90'
+                      }`}
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <button
+                      onClick={() => scrollToSection(link.id)}
+                      className={`block w-full text-left rounded-lg px-4 py-3 hover:bg-cream/5 hover:text-accent transition ${
+                        activeSection === link.id ? 'text-accent bg-cream/5' : 'text-cream/90'
+                      }`}
+                    >
+                      {link.label}
+                    </button>
+                  )}
                 </li>
               ))}
               <li>

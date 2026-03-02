@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { Facebook, Instagram } from 'lucide-react'
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="bg-charcoal-950 py-12 text-center text-cream/80">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 sm:px-6">
@@ -15,7 +17,16 @@ export default function Footer() {
           viewport={{ once: true }}
           className="mb-0 text-sm"
         >
-          &copy; 2024 AMC Sweep. All rights reserved.
+          &copy; 2025–{currentYear} AMC Sweep. All rights reserved. | Site by David Jordan &amp;{' '}
+          <a
+            href="https://cursor.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline"
+          >
+            Cursor
+          </a>
+          .
         </motion.p>
         <p className="text-sm">
           <Link to="/privacy-policy" className="text-accent hover:underline">
