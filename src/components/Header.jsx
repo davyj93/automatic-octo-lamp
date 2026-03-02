@@ -7,7 +7,7 @@ const navLinks = [
   { label: 'Home', id: 'hero' },
   { label: 'Services', id: 'services' },
   { label: 'Why Choose Us', id: 'why-choose-us' },
-  { label: 'Reviews', id: 'testimonials' },
+  { label: 'Reviews', id: 'reviews' },
   { label: 'Contact', id: 'contact' },
 ]
 
@@ -35,7 +35,7 @@ export default function Header() {
       setScrolled(window.scrollY > 60)
 
       // Scroll spy - detect which section is in view
-      const sections = ['hero', 'services', 'why-choose-us', 'testimonials', 'contact']
+      const sections = ['hero', 'services', 'why-choose-us', 'reviews', 'contact']
       const scrollPosition = window.scrollY + 100 // offset for header
 
       for (const sectionId of sections) {
