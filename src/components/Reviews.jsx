@@ -14,12 +14,16 @@ const Reviews = () => {
   }, []);
 
   return (
-    <section id="reviews" className="bg-[#F3F4F1] py-20 px-6">
+    <section id="reviews" className="bg-charcoal py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-[#121214] text-center mb-12">
+        <h2 className="text-4xl font-bold text-white text-center mb-12">
           What Our Customers Say
         </h2>
-        <div className="commonninja_component pid-c28ab60c-2f08-408c-83b6-9015654522ee"></div>
+        <div className="bg-charcoal isolate rounded-lg overflow-hidden">
+          <div className="mix-blend-multiply">
+            <div className="commonninja_component pid-c28ab60c-2f08-408c-83b6-9015654522ee"></div>
+          </div>
+        </div>
       </div>
     </section>
   );
